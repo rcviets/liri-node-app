@@ -6,9 +6,9 @@ exports.spotify = {
 };
 
 exports.bandsInTown = {
-    id: process.env.BANDSINTOWN_ID
+    key: process.env.BIT_KEY
 }
 
-exports.oMDB = {
-    id: process.env.OMDB_KEY
+exports.omdb = {
+    key: process.env.OMDB_KEY
 }
