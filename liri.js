@@ -14,14 +14,17 @@ var omdb = keys.omdb;
 //Returns a valid API key
 var spotify = new Spotify(keys.spotify);
 
+//Take in command line arguments
+function userInput(){
+    var searchType = process.argv[2]
+    var searchTerm = process.argv.slice(3).join('');
+}
 
-var cmdOne = process.argv[2];
-var cmdTwo = process.argv[3];
+//Switch function to determine which API to search
 
-if (cmdOne == concert-this) {
-    //run Bands in Town
-} else if (cmdOne == spotify-this-song) {
-    //run spotify api
-} else if (cmdOne == move-this) {
-    //run OMDB
-} 
+//Functions for individual API searches
+    //Spotify Search
+    //OMDB Search
+    //Bands in Town Search
+    //Random.txt Search
+    
