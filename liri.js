@@ -1,6 +1,6 @@
 //Set up node require modules & global variables 
 require('dotenv').config();
-var axios = require('Axios');
+var axios = require('axios');
 var moment = require('moment');
 var keys = require('./keys.js');
 var fs = require('fs');
@@ -15,7 +15,7 @@ var omdb = keys.omdb;
 var spotify = new Spotify(keys.spotify);
 
 //Take in command line arguments
-function userInput(){
+function userInput() {
     var searchType = process.argv[2]
     var searchTerm = process.argv.slice(3).join('');
     whichSearch(searchType, searchTerm);
@@ -23,23 +23,23 @@ function userInput(){
 
 //Switch function to determine which API to search
 function whichSearch(searchType, searchTerm) {
-    switch(searchType) {
+    switch (searchType) {
         case 'concert-this': {
             searchBIT(searchTerm);
         }
-        break;
+            break;
         case 'spotify-this-song': {
             searchSpotify(searchTerm);
         }
-        break;
+            break;
         case 'movie-this': {
             searchOMDB(searchTerm);
         }
-        break;
+            break;
         case 'do-what-it-says': {
             searchRandom(searchTerm);
         }
-        break;
+            break;
         default: {
             console.log('Please make a valid request');
         }
@@ -47,9 +47,33 @@ function whichSearch(searchType, searchTerm) {
 }
 
 //Functions for individual API searches
-    //Spotify Search
-    //OMDB Search
-    //Bands in Town Search
-    //Random.txt Search
+
+//Bands in Town Search
+function searchBIT(searchTerm) {
+    axios.get("https://rest.bandsintown.com/artists/" + searchTerm + "/events?app_id=" + bitKey)
+
+        .then(function(response) {
+            response = response.data;
+
+            for (var i = 0; i < response.length; i++) {
+                console.log('Venue: ' + response[i].venue.name);
+                console.log('Location: ' + response[i].venue.city);
+                
+                var dateFormat = moment(response[i].datetime, 'YYYY-MM-DD').format('MM/DD/YYYY');
+                console.log('Date: ' + dateFormat);
+
+                console.log('\x1b[35m','++++++++++++++++++++++++++++++++');
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+}
+//Spotify Search
+// function searchSpotify(searchTerm)
+// //OMDB Search
+// function searchOMDB(searchTerm)
+// //Random.txt Search
+// function searchRandom(searchTerm)
 
 userInput();
