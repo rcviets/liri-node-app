@@ -70,14 +70,26 @@ function searchBIT(searchTerm) {
         });
 }
 //Spotify Search
-// function searchSpotify(searchTerm) {
-//     spotify.search({
-//         type: 'track',
-//         query: searchTerm
-//     }) 
-// }
+function searchSpotify(searchTerm) {
+    spotify.search({
+        type: 'track',
+        query: searchTerm
+    }, function(err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        var response = data.tracks.items[0];
+            for (let i = 0; i < response.artists.length; i++) {
+                var respArtist = response.artists[i].name;
+            }
+            console.log('Name: ' + response.name);
+            console.log('Preview: ' + response.preview_url);
+            console.log('Album: ' + response.album.name);
+            console.log('Artists: ' + respArtist);
+    });
+}
 
-// //OMDB Search
+//OMDB Search
 function searchOMDB(searchTerm) {
     axios.get('http://www.omdbapi.com/?apikey=' + omdb + '&t=' + searchTerm)
 
@@ -96,7 +108,18 @@ function searchOMDB(searchTerm) {
             console.log(error);
         });
 }
-// //Random.txt Search
-// function searchRandom(searchTerm)
+//Random.txt Search
+function searchRandom(searchTerm) {
+    fs.readFile('random.txt', 'utf8', function (error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        let dataArr = data.split(',');
+        let searchType = dataArr[0];
+        let searchTerm = dataArr[1];
+        
+        whichSearch(searchType, searchTerm);
+    })
+}
 
 userInput();
