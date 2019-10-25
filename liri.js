@@ -56,13 +56,13 @@ function searchBIT(searchTerm) {
             response = response.data;
 
             for (var i = 0; i < response.length; i++) {
-                console.log('Venue: ' + response[i].venue.name);
-                console.log('Location: ' + response[i].venue.city);
+                console.log('\nVenue: ' + response[i].venue.name);
+                console.log('\nLocation: ' + response[i].venue.city);
                 
                 var dateFormat = moment(response[i].datetime, 'YYYY-MM-DD').format('MM/DD/YYYY');
-                console.log('Date: ' + dateFormat);
+                console.log('\nDate: ' + dateFormat);
 
-                console.log('\x1b[35m','++++++++++++++++++++++++++++++++');
+                console.log('\n++++++++++++++++++++++++++++++++');
             }
         })
         .catch(function(error) {
