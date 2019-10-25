@@ -18,7 +18,7 @@
 
 node liri.js spotify-this-song *Song Name*
 
-![Image of Spotify](https://ibb.co/gFN15jS)
+![Image of Spotify](https://photos.app.goo.gl/bgqcsodADt97pxRm6)
 
 node liri.js concert-this *Band Name*
 
