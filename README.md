@@ -22,18 +22,19 @@ node liri.js spotify-this-song *Song Name*
 
 node liri.js concert-this *Band Name*
 
-//image
+![Image of Bands In Town](concertThis.PNG)
 
 node liri.js movie-this *Movie Name*
 
-//image
+![Image of OMDB](movieThis.PNG)
 
 node liri.js do-what-it-says (reads the random.txt file)
 
+![Image of Read Text File](readTXT.PNG)
 
 ## .env File Setup
 
-//image
+![Image of .env File](envFile.PNG)
 
 SPOTIFY_ID=insert spotify id here
 
